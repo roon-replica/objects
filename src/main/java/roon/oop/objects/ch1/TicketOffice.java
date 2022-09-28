@@ -26,6 +26,9 @@ public class TicketOffice {
 
     public void sellTicketTo(Customer customer) {
         plusEarning(customer.buy(getTicket()));
+
+        // 근데 ticketOffice와 customer  사이에 의존성 추가됨!
+        // ticketOffice의 자율성은 높였지만 결합도가 상승.
     }
 
 }
