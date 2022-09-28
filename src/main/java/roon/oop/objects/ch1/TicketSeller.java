@@ -9,4 +9,12 @@ public class TicketSeller {
     public TicketSeller(TicketOffice ticketOffice) {
         this.ticketOffice = ticketOffice;
     }
+
+    public Ticket getTicket() {
+        return ticketOffice.getTicket();
+    }
+
+    public void earn(Long price) {
+        ticketOffice.plusEarning(price);
+    }
 }

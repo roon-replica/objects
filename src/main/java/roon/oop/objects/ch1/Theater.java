@@ -20,15 +20,16 @@ public class Theater {
     // 그리고 customer나 ticketSeller가 변경되면 결합되어 있는 Theater도 변경될 수 있다..!
     public void enter(Customer customer) {
         if (customer.isInvited()) {
-            var ticket = ticketSeller.getTicketOffice().getTicket();
-            customer.getWallet().setTicket(ticket);
+            var ticket = ticketSeller.getTicket();
+            customer.enter(ticket);
         } else {
-            var ticket = ticketSeller.getTicketOffice().getTicket();
+            var ticket = ticketSeller.getTicket();
             var price = ticket.getPrice();
 
-            customer.getWallet().minusCash(price); // 돈 없으면?
-            ticketSeller.getTicketOffice().plusEarning(price);
-            customer.getWallet().setTicket(ticket);
+            customer.pay(price);
+            ticketSeller.earn(price);
+            customer.enter(ticket);
+
         }
     }
 
