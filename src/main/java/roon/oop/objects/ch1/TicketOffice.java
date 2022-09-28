@@ -13,19 +13,19 @@ public class TicketOffice {
         this.tickets.addAll(Arrays.asList(tickets));
     }
 
-    public Ticket getTicket() {
+    private Ticket getTicket() {
         var ret = tickets.get(0);
         tickets.remove(0);  // remove 해도 ret에는 영향없지?
 
         return ret;
     }
 
-    public void minusEarning(Long price) {
-        this.earning -= price;
+    private void plusEarning(Long price) {
+        this.earning += price;
     }
 
-    public void plusEarning(Long price) {
-        this.earning += price;
+    public void sellTicketTo(Customer customer) {
+        plusEarning(customer.buy(getTicket()));
     }
 
 }

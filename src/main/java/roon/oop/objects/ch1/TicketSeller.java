@@ -10,8 +10,8 @@ public class TicketSeller {
         this.ticketOffice = ticketOffice;
     }
 
-    // Customer도 로직을 스스로 처리하도록 캡슐화
+    // TicketSeller도 로직을 스스로 처리하도록 캡슐화
     public void sellTo(Customer customer){
-        ticketOffice.plusEarning(customer.buy(ticketOffice.getTicket()));
+        ticketOffice.sellTicketTo(customer);
     }
 }

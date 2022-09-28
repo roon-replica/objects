@@ -16,24 +16,29 @@ public class Wallet {
         this.cash = cash;
     }
 
-    public boolean hasInvitation() {
+    private boolean hasInvitation() {
         return !Objects.isNull(invitation);
     }
 
-    public boolean hasTicket() {
-        return !Objects.isNull(ticket);
-    }
-
-    public void setTicket(Ticket ticket) {
+    private void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 
-    public void minusCash(Long cost) {
+    private void minusCash(Long cost) {
         this.cash -= cost;
     }
 
-    public void plusCash(Long cost) {
-        this.cash += cost;
+
+    public Long keep(Ticket ticket) {
+        if (hasInvitation()) {
+            setTicket(ticket);
+            return 0L;
+        } else {
+            var price = ticket.getPrice();
+            minusCash(price);
+            setTicket(ticket);
+            return price;
+        }
     }
 
 }

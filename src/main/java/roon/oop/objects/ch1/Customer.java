@@ -10,15 +10,9 @@ public class Customer {
         this.wallet = wallet;
     }
 
+    // Customer도 로직을 스스로 처리하도록 캡슐화
     public Long buy(Ticket ticket){
-        if (wallet.hasInvitation()) {
-            wallet.setTicket(ticket);
-            return 0L;
-        } else {
-            var price = ticket.getPrice();
-            wallet.minusCash(price);
-            wallet.setTicket(ticket);
-            return price;
-        }
+        // wallet도 자율적인 존재로 개선.
+        return wallet.keep(ticket);
     }
 }
