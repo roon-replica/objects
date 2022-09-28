@@ -10,15 +10,15 @@ public class Customer {
         this.wallet = wallet;
     }
 
-    public boolean isInvited() {
-        return wallet.hasInvitation();
-    }
-
-    public void enter(Ticket ticket) {
-        wallet.setTicket(ticket);
-    }
-
-    public void pay(Long price){
-        wallet.minusCash(price);
+    public Long buy(Ticket ticket){
+        if (wallet.hasInvitation()) {
+            wallet.setTicket(ticket);
+            return 0L;
+        } else {
+            var price = ticket.getPrice();
+            wallet.minusCash(price);
+            wallet.setTicket(ticket);
+            return price;
+        }
     }
 }
