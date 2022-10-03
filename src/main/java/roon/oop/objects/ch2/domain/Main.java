@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 public class Main {
     public static void main(String[] args) {
         var customer = new Customer();
-        var movie = new Movie("sample movie name", 120, new Money(10000));
+        var movie = new Movie("sample movie name", Duration.of(120, "minute"), new Money(10000));
         var screening = getSampleScreening(movie);
 
         customer.addReservation(

@@ -26,11 +26,15 @@ public class Screening {
         return this.sequence == sequence;
     }
 
-    public Money getMovieFee() {
+    public Money getOriginalMovieFee() {
         return movie.getFee();
     }
 
-    public Reservation reserve(Customer customer, int audienceCount) {
+    public Money calculateFee(int audienceCount) {
+        return movie.calculateMovieFee(this).multiply(audienceCount);
+    }
+
+    public Reservation reserve(Customer customer, int audienceCount) {  // 예매가 여기 있는게 맞나?
         var reservation = new Reservation(this, audienceCount, customer.getCustomerId());
         customer.addReservation(reservation);
 

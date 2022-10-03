@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 public class Money {
     private BigDecimal amount;
 
+    public static final Money ZERO = Money.of(BigDecimal.ZERO);
+
     public Money(long amount) {
         this.amount = new BigDecimal(amount);
     }
@@ -17,11 +19,15 @@ public class Money {
         this.amount = amount;
     }
 
-    public BigDecimal multiply(int count) {
-        return amount.multiply(BigDecimal.valueOf(count));
+    public Money multiply(double count) {
+        return Money.of(amount.multiply(BigDecimal.valueOf(count)));
     }
 
     public static Money of(BigDecimal amount) {
         return new Money(amount);
+    }
+
+    public Money subtract(Money amount) {
+        return Money.of(this.amount.subtract(amount.amount));
     }
 }

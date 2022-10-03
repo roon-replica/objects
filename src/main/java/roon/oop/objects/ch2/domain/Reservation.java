@@ -27,8 +27,4 @@ public class Reservation {
         this.createdAt = now;
         this.modifiedAt = now;
     }
-
-    public Money getTotalFee() {
-        return Money.of(screening.getMovieFee().multiply(this.audienceCount));
-    }
 }

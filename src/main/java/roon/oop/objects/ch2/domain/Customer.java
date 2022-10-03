@@ -11,8 +11,12 @@ public class Customer {
     private String customerId;
     private List<Reservation> reservations = new ArrayList<>();
 
-    public Customer() {
+    private Customer() {
         this.customerId = IdGenerator.newOne();
+    }
+
+    public static Customer newOne(){
+        return new Customer();
     }
 
     public void addReservation(Reservation reservation) {

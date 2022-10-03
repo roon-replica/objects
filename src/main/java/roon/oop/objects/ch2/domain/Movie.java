@@ -10,10 +10,10 @@ public class Movie {
     private String movieId;
 
     private String movieName;
-    private int runningMinutes;
+    private Duration runningMinutes;
     private Money fee;
 
-    public Movie(String movieName, int runningMinutes, Money fee) {
+    public Movie(String movieName, Duration runningMinutes, Money fee) {
         this.movieId = IdGenerator.newOne();
         this.movieName = movieName;
         this.runningMinutes = runningMinutes;

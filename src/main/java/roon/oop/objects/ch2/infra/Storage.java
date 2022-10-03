@@ -24,4 +24,16 @@ public class Storage {
     public static Screening getScreening(String id) {
         return screenings.getOrDefault(id, null);
     }
+
+    public static void putCustomer(String id, Customer customer) {
+        customers.put(id, customer);
+    }
+
+    public static void putMovie(String id, Movie movie) {
+        movies.put(id, movie);
+    }
+
+    public static void putScreening(String id, Screening screening) {
+        screenings.put(id, screening);
+    }
 }
